@@ -22,6 +22,12 @@ router.param('id', /^[a-z0-9]{24}$/);
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'ApirestServices' });
 });
+// listar contactos
+router.get('/contact', (req, res, next) => {
+    Contact.find({}).exec( (error, docs) => {
+        res.status(200).json(docs);
+    })
+});
 
 /* POST */
 // Insertando Contactos
